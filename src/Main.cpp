@@ -7,13 +7,28 @@
 #include <iostream>
 #include "Helado.h"
 #include "Serializar.h"
+#include "vector"
 
 int main() {
     Helado *fresa = new Helado("fresa", " 1234", 2000);
+    Helado *chocolate = new Helado("chocolate", " 2345", 3000);
+    vector<json> Vec;
+    vector<Helado *> Heladeria;
     Serializar Serialize;
-    Serialize.JSONSerialize(fresa);
-    Helado *helado;
-    helado = Serialize.JSONDeserialize("ArchivoTexto.json");
-    cout << helado->toString() << endl;
+    Heladeria.push_back(fresa);
+    Heladeria.push_back(chocolate);
+    for (int i = 0; i < Heladeria.size(); i++) {
+        Vec.push_back(Serialize.JSONSerialize(Heladeria.at(i)));
+
+    }
+
+    ofstream archivo;
+    try { archivo.open("ArchivoTexto.json", ios::binary); }
+    catch (ifstream::failure a) {
+        cout << "Error" << endl;
+        exit(1);
+    }
+    archivo << Vec;
+    archivo.close();
     return 0;
 }

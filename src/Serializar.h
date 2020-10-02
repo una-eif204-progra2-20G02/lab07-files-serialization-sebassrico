@@ -9,15 +9,13 @@
 #include <fstream>
 #include <iostream>
 #include "Helado.h"
-
 using namespace std;
 using json = nlohmann::json;
 
 class Serializar {
 public:
-    void JSONSerialize(Helado *ice);
+    json JSONSerialize(Helado *ice);
 
-    Helado *JSONDeserialize(string ruta);
 
     ~Serializar();
 };
