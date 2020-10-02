@@ -12,5 +12,5 @@ int main() {
     Helado *fresa = new Helado("fresa", " 1234", 2000);
     Serializar Serialize;
     Serialize.JSONSerialize(fresa->getSabor(), fresa->getId(), fresa->getKCal());
-
+return 0;
 }

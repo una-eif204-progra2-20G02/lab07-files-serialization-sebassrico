@@ -30,6 +30,7 @@ public:
     int getKCal();
     void setKCal(int calories);
 
+    string toString();
 
 };
 

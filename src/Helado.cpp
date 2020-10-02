@@ -14,4 +14,12 @@ string Helado::getId() {return id;}
 int Helado::getKCal() {return kcal;}
 void Helado::setKCal(int calories) {this->kcal=calories;}
 void Helado::setSabor(string flavor) {sabor=flavor;}
-string Helado::getSabor() {return sabor;}
+string Helado::getSabor() { return sabor; }
+
+string Helado::toString() {
+    ostringstream print;
+    print << "Sabor: " << getSabor() << endl;
+    print << "ID: " << getId() << endl;
+    print << "Calorias: " << endl;
+    return print.str();
+}
