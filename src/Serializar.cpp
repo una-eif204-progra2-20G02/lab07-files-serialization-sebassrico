@@ -6,19 +6,36 @@
 
 Serializar::~Serializar() {}
 
-void Serializar::JSONSerialize(string sabor, string id, int kcal) {
-    json Helado;
-    Helado["Sabor"] = sabor;
-    Helado["ID"] = id;
-    Helado["kcal"] = kcal;
-    string HeladoSerializado = Helado.dump(4);
-    ofstream archivo;
-    try { archivo.open("ArchivoTexto.json", ios::binary); }
+ void Serializar::JSONSerialize(Helado *ice) {
+     json Helado;
+     Helado["Sabor"] = ice->getSabor();
+     Helado["ID"] = ice->getId();
+     Helado["kcal"] = ice->getKCal();
+     ofstream archivo;
+     try { archivo.open("ArchivoTexto.json", ios::binary); }
+     catch (ifstream::failure a) {
+         cout << "Error" << endl;
+         exit(1);
+     }
+     archivo << Helado;
+     archivo.close();
+
+ }
+
+Helado *Serializar::JSONDeserialize(string ruta) {
+    Helado *helado = new Helado();
+    ifstream archivo1;
+    string texto;
+    json mesa;
+    try { archivo1.open(ruta, ios::binary); }
     catch (ifstream::failure a) {
-        cout << "Error" << endl;
+        cout << "no se pudo abrir el archivo";
         exit(1);
     }
-    archivo << HeladoSerializado << '\n';
-    archivo.close();
+    archivo1 >> mesa;
+    helado->setSabor(mesa["Sabor"]);
+    helado->setKCal(mesa["kcal"]);
+    helado->setId(mesa["ID"]);
 
+    return helado;
 }

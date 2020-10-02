@@ -8,13 +8,16 @@
 #include <../lib/nlohmann/json.hpp>
 #include <fstream>
 #include <iostream>
+#include "Helado.h"
 
 using namespace std;
 using json = nlohmann::json;
 
 class Serializar {
 public:
-    void JSONSerialize(string sabor, string id, int kcal);
+    void JSONSerialize(Helado *ice);
+
+    Helado *JSONDeserialize(string ruta);
 
     ~Serializar();
 };

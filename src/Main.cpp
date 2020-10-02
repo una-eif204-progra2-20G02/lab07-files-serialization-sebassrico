@@ -11,6 +11,9 @@
 int main() {
     Helado *fresa = new Helado("fresa", " 1234", 2000);
     Serializar Serialize;
-    Serialize.JSONSerialize(fresa->getSabor(), fresa->getId(), fresa->getKCal());
-return 0;
+    Serialize.JSONSerialize(fresa);
+    Helado *helado;
+    helado = Serialize.JSONDeserialize("ArchivoTexto.json");
+    cout << helado->toString() << endl;
+    return 0;
 }
