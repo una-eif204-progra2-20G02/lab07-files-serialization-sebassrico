@@ -5,34 +5,27 @@
 #include "Serializar.h"
 
 #include <iostream>
-#include "Helado.h"
-#include "Serializar.h"
 #include "vector"
 #include "BinSeria.h"
+#include "Manager.h"
 
 int main() {
 
-    Helado *fresa = new Helado("fresa", " 1234", 2000);
-    Helado *chocolate = new Helado("chocolate", " 2345", 3000);
-    vector<json> Vec;
-    vector<Helado *> Heladeria;
+    Helado fresa("fresa", " 1234", 2000);
+    Helado chocolate("chocolate", " 2345", 3000);
+    vector<Helado> heladeria;
+    Manager manager;
     BinSeria binary;
-    binary.Serial(Heladeria);
-    Serializar Serialize;
-    Heladeria.push_back(fresa);
-    Heladeria.push_back(chocolate);
-    for (int i = 0; i < Heladeria.size(); i++) {
-        Vec.push_back(Serialize.JSONSerialize(Heladeria.at(i)));
-
-    }
-
+    Serializar json;
+    heladeria.push_back(fresa);
+    heladeria.push_back(chocolate);
     ofstream archivo;
     try { archivo.open("ArchivoTexto.json", ios::binary); }
     catch (ifstream::failure a) {
         cout << "Error" << endl;
         exit(1);
     }
-    archivo << Vec;
+    archivo << manager.serialize(json, heladeria);
     archivo.close();
     return 0;
 }

@@ -6,13 +6,20 @@
 
 Serializar::~Serializar() {}
 
-json Serializar::JSONSerialize(Helado *ice) {
-    json Helado;
-    Helado["Sabor"] = ice->getSabor();
-    Helado["ID"] = ice->getId();
-    Helado["kcal"] = ice->getKCal();
-    return Helado;
-
-
+void Serializar::to_json(json &_json, const Helado &_iceCream) {
+    _json = json{
+            {"id",       _iceCream.getSabor()},
+            {"name",     _iceCream.getId()},
+            {"calories", _iceCream.getKCal()},
+    };
 }
+
+
+string Serializar::serialize(vector<Helado> _iceCreamList) {
+    json jsonData(_iceCreamList);
+    string jsonArray = jsonData.dump();
+    return jsonArray;
+}
+
+
 

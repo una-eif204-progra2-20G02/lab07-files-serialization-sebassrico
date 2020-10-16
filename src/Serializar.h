@@ -9,15 +9,21 @@
 #include <fstream>
 #include <iostream>
 #include "Helado.h"
+#include <utility>
+#include "ISereializer.h"
+
 using namespace std;
 using json = nlohmann::json;
 
-class Serializar {
+class Serializar : public ISereializer {
 public:
-    json JSONSerialize(Helado *ice);
+    string serialize(vector<Helado> Heladeria) override;
 
 
     ~Serializar();
+
+    void to_json(json &_json, const Helado &_iceCream);
+
 };
 
 

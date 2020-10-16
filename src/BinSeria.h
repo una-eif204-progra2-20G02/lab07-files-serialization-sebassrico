@@ -9,12 +9,13 @@
 #include "Helado.h"
 #include <fstream>
 #include "vector"
+#include "ISereializer.h"
 
 using namespace std;
 
-class BinSeria {
+class BinSeria : public ISereializer {
 public:
-    void Serial(vector<Helado *> vec);
+    string serialize(vector<Helado> vec) override;
 
     ~BinSeria();
 

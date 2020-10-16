@@ -3,18 +3,26 @@
 //
 
 #include "Helado.h"
+
 Helado::Helado(string sabor, string id, int kcal) {
-    this->sabor=sabor;
-    this->id=id;
-    this->kcal=kcal;
+    this->sabor = sabor;
+    this->id = id;
+    this->kcal = kcal;
 }
+
 Helado::Helado() {}
-void Helado::setId(string id) {this->id=id;}
-string Helado::getId() {return id;}
-int Helado::getKCal() {return kcal;}
-void Helado::setKCal(int calories) {this->kcal=calories;}
-void Helado::setSabor(string flavor) {sabor=flavor;}
-string Helado::getSabor() { return sabor; }
+
+void Helado::setId(string id) { this->id = id; }
+
+string Helado::getId() const { return id; }
+
+int Helado::getKCal() const { return kcal; }
+
+void Helado::setKCal(int calories) { this->kcal = calories; }
+
+void Helado::setSabor(string flavor) { sabor = flavor; }
+
+string Helado::getSabor() const { return sabor; }
 
 string Helado::toString() {
     ostringstream print;

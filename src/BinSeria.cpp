@@ -4,7 +4,7 @@
 
 #include "BinSeria.h"
 
-void BinSeria::Serial(vector<Helado *> vec) {
+string BinSeria::serialize(vector<Helado> vec) {
     ofstream archivo;
 
 
@@ -13,9 +13,10 @@ void BinSeria::Serial(vector<Helado *> vec) {
     catch (ifstream::failure a) { cout << "no se pudo abrir el archivo"; }
 
 
-    archivo.write((char *) &vec, sizeof(vec));
+    archivo.write((char *) &vec, vec.size());
 
     archivo.close();
+    return "";
 }
 
 BinSeria::~BinSeria() {}

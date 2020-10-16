@@ -4,9 +4,9 @@
 
 #ifndef MY_PROJECT_NAME_PERSONA_H
 #define MY_PROJECT_NAME_PERSONA_H
+
 #include <iostream>
 #include <sstream>
-
 
 
 using namespace std;
@@ -21,13 +21,16 @@ public:
 
     Helado(string sabor, string id, int kcal);
 
-    string getSabor();
+    string getSabor() const;
 
     void setSabor(string flavor);
 
-    string getId();
+    string getId() const;
+
     void setId(string id);
-    int getKCal();
+
+    int getKCal() const;
+
     void setKCal(int calories);
 
     string toString();
