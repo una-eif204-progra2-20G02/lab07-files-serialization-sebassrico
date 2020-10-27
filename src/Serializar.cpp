@@ -8,8 +8,8 @@ Serializar::~Serializar() {}
 
 void Serializar::to_json(json &_json, const Helado &_iceCream) {
     _json = json{
-            {"id",       _iceCream.getSabor()},
-            {"name",     _iceCream.getId()},
+            {"id",       _iceCream.getId()},
+            {"name",     _iceCream.getSabor()},
             {"calories", _iceCream.getKCal()},
     };
 }
